@@ -38,16 +38,31 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Build WhatsApp message with form data
+    const inquiryMessage = `🎉 *New Event Inquiry*
+
+*Name:* ${formData.name}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email}
+*Event Type:* ${formData.eventType}
+*Event Date:* ${formData.eventDate || "Not specified"}
+
+*Message:*
+${formData.message}`;
+
+    const encodedMessage = encodeURIComponent(inquiryMessage);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    // Open WhatsApp with the inquiry
+    window.open(whatsappUrl, "_blank");
 
     toast({
-      title: "Inquiry Submitted!",
-      description: "We'll get back to you within 24 hours.",
+      title: "Redirecting to WhatsApp!",
+      description: "Complete your inquiry on WhatsApp.",
     });
 
     setFormData({

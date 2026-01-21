@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -69,6 +69,15 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
+            <a
+              href="https://www.instagram.com/eclassicalevent"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground transition-all duration-300"
+              aria-label="Follow us on Instagram"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
             <a href="tel:+919876543210">
               <Button variant="outline-gold" size="sm" className="gap-2">
                 <Phone className="w-4 h-4" />
@@ -121,6 +130,16 @@ const Header = () => {
               ))}
             </ul>
             <div className="flex flex-col gap-3 mt-6">
+              <a
+                href="https://www.instagram.com/eclassicalevent"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline-gold" className="w-full gap-2">
+                  <Instagram className="w-4 h-4" />
+                  Follow on Instagram
+                </Button>
+              </a>
               <a href="tel:+919876543210">
                 <Button variant="outline-gold" className="w-full gap-2">
                   <Phone className="w-4 h-4" />
